@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>DiBelajar.In</title>
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo.svg') }}">
+    <link rel="icon" href="{{ asset('logo.svg') }}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/modify.css', 'resources/js/app.js', 'resources/js/modify.js'])
+
 
 </head>
 
