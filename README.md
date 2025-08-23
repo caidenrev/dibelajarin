@@ -65,5 +65,3 @@ Jika kamu suka dengan misi kami, bantu sebarkan **DiBelajar.In** ke lebih banyak
 🔥 *"Pendidikan adalah senjata paling ampuh untuk mengubah dunia."* – Nelson Mandela
 
 ---
-
-Mau aku bikinin juga versi README yang **ada badge GitHub (stars, issues, license, dll)** biar lebih profesional kayak project open source besar?
