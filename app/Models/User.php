@@ -77,4 +77,21 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Comment::class);
     }
+
+    /**
+     * Cek apakah user perlu dianggap sudah terverifikasi.
+     * Admin selalu dianggap terverifikasi.
+     *
+     * @return bool
+     */
+    public function hasVerifiedEmail(): bool
+    {
+        // Jika role user adalah 'admin', langsung return true
+        if ($this->role === 'admin') {
+            return true;
+        }
+
+        // Jika bukan admin, jalankan pengecekan normal
+        return ! is_null($this->email_verified_at);
+    }
 }
