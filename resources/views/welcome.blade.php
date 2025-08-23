@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="icon" href="{{ asset('logo.svg') }}" type="image/svg+xml" class="text-blue">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/resources/css/modify.css">
     @vite(['resources/css/app.css', 'resources/css/modify.css', 'resources/js/app.js', 'resources/js/modify.js'])
 </head>
 
@@ -225,8 +224,6 @@
             </div>
         </footer>
     </div>
-
-    <script src="/resources/js/modify.js"></script>
 </body>
 
 </html>

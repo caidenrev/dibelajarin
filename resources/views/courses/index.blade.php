@@ -147,5 +147,4 @@
     </div>
 
     {{-- Custom CSS untuk Animasi --}}
-    <link rel="stylesheet" href="/resources/css/modify.css">
 </x-app-layout>
