@@ -64,4 +64,21 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     {
         return $this->role === 'admin';
     }
+
+    /**
+     * Menentukan apakah user sudah memverifikasi alamat email mereka.
+     * Admin akan selalu dianggap sudah terverifikasi.
+     *
+     * @return bool
+     */
+    public function hasVerifiedEmail(): bool
+    {
+        // ✅ Jika role user adalah 'admin', langsung anggap terverifikasi
+        if ($this->role === 'admin') {
+            return true;
+        }
+
+        // Untuk user lain, lakukan pengecekan normal ke database
+        return ! is_null($this->email_verified_at);
+    }
 }
