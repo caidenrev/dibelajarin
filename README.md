@@ -1,5 +1,3 @@
-Oke, aku bikinin README yang keren, rapi, dan berkesan profesional tapi tetap punya nuansa semangat anak muda. Kamu bisa langsung pakai di GitHub repo **DiBelajar.In**:
-
 ---
 
 # 📚 DiBelajar.In
