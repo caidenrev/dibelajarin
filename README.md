@@ -1,5 +1,3 @@
----
-
 # 📚 DiBelajar.In
 
 **DiBelajar.In** adalah sebuah **webapp pembelajaran gratis** yang dipersembahkan khusus untuk generasi muda Indonesia.
