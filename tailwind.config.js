@@ -1,6 +1,7 @@
 // tailwind.config.js
 import defaultTheme from "tailwindcss/defaultTheme";
 import forms from "@tailwindcss/forms";
+import typography from "@tailwindcss/typography"; // <--- 1. TAMBAHKAN BARIS INI
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -15,9 +16,6 @@ export default {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
-            // ============================================
-            // TAMBAHKAN BLOK INI
-            // ============================================
             keyframes: {
                 enter: {
                     "0%": { transform: "translateY(20px)", opacity: "0" },
@@ -27,9 +25,8 @@ export default {
             animation: {
                 enter: "enter 0.5s ease-out forwards",
             },
-            // ============================================
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, typography], // <--- 2. TAMBAHKAN 'typography' DI SINI
 };

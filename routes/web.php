@@ -17,6 +17,10 @@ Route::get('/admin/login', fn() => redirect()->route('login'))->name('filament.a
 
 Route::get('/', [LandingPageController::class, 'index'])->name('welcome');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Route::get('/courses', [CoursePageController::class, 'index'])->name('courses.index');
 Route::get('/courses/{course}', [CoursePageController::class, 'show'])->name('courses.show');
 
