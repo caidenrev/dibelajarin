@@ -18,7 +18,7 @@ class RedirectIfAdmin
     {
         // Periksa apakah ada pengguna yang sedang login
         // DAN apakah perannya adalah 'admin' atau 'instruktur'
-        if (Auth::check() && in_array(Auth::user()->role, ['admin', 'instruktur'])) {
+        if (Auth::check() && in_array(Auth::user()->role, ['admin', 'instructor'])) {
             // Jika ya, alihkan ke dasbor admin
             return redirect('/admin');
         }

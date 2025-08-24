@@ -43,7 +43,7 @@ class Kernel extends HttpKernel
     ];
 
     /**
-     * The application's route middleware.
+     * The application's route middleware. memek
      *
      * These middleware may be assigned to groups or used individually.
      *
