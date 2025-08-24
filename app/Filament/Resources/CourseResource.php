@@ -4,18 +4,15 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CourseResource\Pages;
 use App\Models\Course;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables\Table;
+use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Set;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use App\Filament\Resources\CourseResource\RelationManagers;
@@ -28,40 +25,28 @@ class CourseResource extends Resource
 
     protected static ?string $navigationGroup = 'Content Management';
 
-    public static function form(Form $form): Form 
+    public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('thumbnail')
-                    ->image()
-                    ->maxSize(2048)
-                    ->directory('course-thumbnails')
-                    ->visibility('public')
-                    ->required()
-                    ->acceptedFileTypes(['image/jpeg', 'image/png'])
-                    ->panelAspectRatio('16:9')
-                    ->imageResizeMode('cover')
-                    ->imageCropAspectRatio('16:9'),
-
                 Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required()
                     ->searchable()
                     ->preload(),
-
                 TextInput::make('title')
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn (Set $set, ?string $state) => 
-                        $set('slug', Str::slug($state))
-                    ),
-
+                    ->afterStateUpdated(fn (string $operation, $state, \Filament\Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
                 TextInput::make('slug')
                     ->required()
                     ->unique(Course::class, 'slug', ignoreRecord: true)
-                    ->disabled(),
-
+                    ->disabled(fn (string $operation): bool => $operation !== 'create'),
+                FileUpload::make('thumbnail')
+                    ->image() // Menampilkan preview gambar
+                    ->directory('course-thumbnails') // Simpan di folder storage/app/public/course-thumbnails
+                    ->columnSpanFull(), // Agar lebarnya penuh
                 RichEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
