@@ -4,15 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CourseResource\Pages;
 use App\Models\Course;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
-use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use App\Filament\Resources\CourseResource\RelationManagers;
@@ -29,6 +26,38 @@ class CourseResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('thumbnail')
+                    ->image()
+                    ->maxSize(2048)
+                    ->directory('course-thumbnails')
+                    ->visibility('public')
+                    ->beforeUpload(function ($file) {
+                        try {
+                            if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'instructor'])) {
+                                Log::error('Unauthorized upload attempt', [
+                                    'user' => Auth::id(),
+                                    'role' => Auth::user()->role ?? 'none'
+                                ]);
+                                return false;
+                            }
+                            return true;
+                        } catch (\Exception $e) {
+                            Log::error('Upload validation error: ' . $e->getMessage());
+                            return false;
+                        }
+                    })
+                    ->afterUpload(function ($file) {
+                        Log::info('Course thumbnail uploaded', [
+                            'filename' => $file->getFilename(),
+                            'path' => $file->getPath(),
+                            'user' => Auth::id()
+                        ]);
+                    })
+                    ->required()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png'])
+                    ->panelAspectRatio('16:9')
+                    ->imageResizeMode('cover')
+                    ->imageCropAspectRatio('16:9'),
                 Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required()
@@ -43,10 +72,6 @@ class CourseResource extends Resource
                     ->required()
                     ->unique(Course::class, 'slug', ignoreRecord: true)
                     ->disabled(fn (string $operation): bool => $operation !== 'create'),
-                FileUpload::make('thumbnail')
-                    ->image() // Menampilkan preview gambar
-                    ->directory('course-thumbnails') // Simpan di folder storage/app/public/course-thumbnails
-                    ->columnSpanFull(), // Agar lebarnya penuh
                 RichEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
