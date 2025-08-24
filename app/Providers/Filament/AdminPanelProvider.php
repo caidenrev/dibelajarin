@@ -60,8 +60,8 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                'verified',
-            ])
+                // 'verified', // Commented out to disable email verification
+                ])
             ->authMiddleware([
                 Authenticate::class,
             ]);

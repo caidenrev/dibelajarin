@@ -15,7 +15,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 // PASTIKAN ADA IMPLEMENTS FILAMENTUSER
-class User extends Authenticatable implements MustVerifyEmail, FilamentUser
+// Commented out MustVerifyEmail to disable email verification
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
 
@@ -73,12 +74,13 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
      */
     public function hasVerifiedEmail(): bool
     {
-        // ✅ Jika role user adalah 'admin', langsung anggap terverifikasi
-        if ($this->role === 'admin') {
-            return true;
-        }
-
-        // Untuk user lain, lakukan pengecekan normal ke database
-        return ! is_null($this->email_verified_at);
+        // Email verification disabled - always return true
+        return true;
+        
+        // Original implementation:
+        // if ($this->role === 'admin') {
+        //     return true;
+        // }
+        // return ! is_null($this->email_verified_at);
     }
 }
