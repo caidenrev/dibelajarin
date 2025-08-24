@@ -45,6 +45,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/quiz-attempts/{attempt}', [QuizAttemptController::class, 'show'])->name('quizzes.result');
 });
 
-
+Route::get('/debug-config', function () {
+    // Hentikan eksekusi dan tampilkan output debugging
+    dd([
+        'Config App URL' => config('app.url'),
+        'URL Helper Generated' => url('/'),
+        'Request Scheme' => request()->getScheme(),
+        'Request isSecure' => request()->isSecure(),
+        'SERVER HTTP_X_FORWARDED_PROTO' => $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? 'Tidak Ditemukan',
+        'SERVER REMOTE_ADDR' => $_SERVER['REMOTE_ADDR'] ?? 'Tidak Ditemukan',
+    ]);
+});
 
 require __DIR__.'/auth.php';
