@@ -16,14 +16,10 @@ class RedirectIfAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Periksa apakah ada pengguna yang sedang login
-        // DAN apakah perannya adalah 'admin' atau 'instruktur'
-        if (Auth::check() && in_array(Auth::user()->role, ['admin', 'instructor'])) {
-            // Jika ya, alihkan ke dasbor admin
-            return redirect('/admin');
+        if (auth()->check() && in_array(auth()->user()->role, ['admin', 'instructor'])) {
+            return redirect()->route('filament.admin.pages.dashboard');
         }
 
-        // Jika tidak (pengguna adalah tamu atau klien biasa), lanjutkan ke halaman tujuan
         return $next($request);
     }
 }
