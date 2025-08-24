@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/debug-config', function () {
-    // Hentikan eksekusi dan tampilkan output debugging
+    // Hentikan eksekusi dan tampilkan output debugging hadeh
     dd([
         'Config App URL' => config('app.url'),
         'URL Helper Generated' => url('/'),
