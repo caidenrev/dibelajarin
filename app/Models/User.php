@@ -15,8 +15,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 // PASTIKAN ADA IMPLEMENTS FILAMENTUSER
-// Commented out MustVerifyEmail to disable email verification
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
     use HasFactory, Notifiable;
 
@@ -63,7 +62,7 @@ class User extends Authenticatable implements FilamentUser
     // ==========================================================
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->role === 'admin' || $this->role === 'instructor';
+        return $this->role === 'admin';
     }
 
     /**
@@ -74,13 +73,9 @@ class User extends Authenticatable implements FilamentUser
      */
     public function hasVerifiedEmail(): bool
     {
-        // Email verification disabled - always return true
-        return true;
-        
-        // Original implementation:
-        // if ($this->role === 'admin') {
-        //     return true;
-        // }
-        // return ! is_null($this->email_verified_at);
+        if ($this->role === 'admin') {
+            return true;
+        }
+        return ! is_null($this->email_verified_at);
     }
 }
