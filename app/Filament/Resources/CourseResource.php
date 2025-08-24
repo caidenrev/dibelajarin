@@ -7,8 +7,13 @@ use App\Models\Course;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn; // Add this import
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Set;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,7 +28,7 @@ class CourseResource extends Resource
 
     protected static ?string $navigationGroup = 'Content Management';
 
-    public static function form(Form $form): Form
+    public static function form(Form $form): Form 
     {
         return $form
             ->schema([
@@ -32,47 +37,31 @@ class CourseResource extends Resource
                     ->maxSize(2048)
                     ->directory('course-thumbnails')
                     ->visibility('public')
-                    ->beforeUpload(function ($file) {
-                        try {
-                            if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'instructor'])) {
-                                Log::error('Unauthorized upload attempt', [
-                                    'user' => Auth::id(),
-                                    'role' => Auth::user()->role ?? 'none'
-                                ]);
-                                return false;
-                            }
-                            return true;
-                        } catch (\Exception $e) {
-                            Log::error('Upload validation error: ' . $e->getMessage());
-                            return false;
-                        }
-                    })
-                    ->afterUpload(function ($file) {
-                        Log::info('Course thumbnail uploaded', [
-                            'filename' => $file->getFilename(),
-                            'path' => $file->getPath(),
-                            'user' => Auth::id()
-                        ]);
-                    })
                     ->required()
                     ->acceptedFileTypes(['image/jpeg', 'image/png'])
                     ->panelAspectRatio('16:9')
                     ->imageResizeMode('cover')
                     ->imageCropAspectRatio('16:9'),
+
                 Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required()
                     ->searchable()
                     ->preload(),
+
                 TextInput::make('title')
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn (string $operation, $state, \Filament\Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => 
+                        $set('slug', Str::slug($state))
+                    ),
+
                 TextInput::make('slug')
                     ->required()
                     ->unique(Course::class, 'slug', ignoreRecord: true)
-                    ->disabled(fn (string $operation): bool => $operation !== 'create'),
+                    ->disabled(),
+
                 RichEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
