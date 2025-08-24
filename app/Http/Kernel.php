@@ -34,6 +34,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\RedirectIfAdmin::class,
         ],
 
         'api' => [
@@ -56,6 +57,14 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EmailVerificationPrompt::class,
+    ];
+
+    /**
+     * The application's middleware aliases.
+     *
+     * @var array<string, class-string|string>
+     */
+    protected $routeMiddleware = [
         'redirect.if.admin' => \App\Http\Middleware\RedirectIfAdmin::class,
     ];
 }

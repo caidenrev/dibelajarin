@@ -12,10 +12,10 @@ use App\Http\Controllers\QuizPageController;
 use App\Http\Controllers\QuizAttemptController;
 use App\Http\Controllers\CommentController;
 
-// <-- TAMBAHKAN BARIS INI DI SINI
+// Route untuk admin login
 Route::get('/admin/login', fn() => redirect()->route('login'))->name('filament.admin.auth.login');
 
-// Grup untuk semua rute yang akan mengalihkan admin/instruktur
+// Grup untuk semua route yang akan menggunakan middleware redirect.if.admin
 Route::middleware(['redirect.if.admin'])->group(function () {
     // Route publik
     Route::get('/', [LandingPageController::class, 'index'])->name('welcome');
