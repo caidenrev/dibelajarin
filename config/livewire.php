@@ -62,6 +62,11 @@ return [
     | a global endpoint for temporary storage. You may configure this below:
     |
     */
+    'middleware' => [
+    'web',
+    // jangan tambahkan 'auth' di sini
+],
+
 
     'temporary_file_upload' => [
         'disk' => 'public',        // Example: 'local', 's3'              | Default: 'default'
