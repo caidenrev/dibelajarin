@@ -11,6 +11,8 @@ use App\Http\Controllers\InstructorProfileController;
 use App\Http\Controllers\QuizPageController;
 use App\Http\Controllers\QuizAttemptController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\LeaderboardController;
 
 // <-- TAMBAHKAN BARIS INI DI SINI
 Route::get('/admin/login', fn() => redirect()->route('login'))->name('filament.admin.auth.login');
@@ -36,6 +38,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/courses/{course}/enroll', [EnrollmentController::class, 'store'])->name('courses.enroll');
     Route::get('/courses/{course}/lessons/{lesson}', [LessonPageController::class, 'show'])->name('lessons.show');
+    Route::get('/courses/{course}/certificate', [CertificateController::class, 'generate'])->name('courses.certificate');
 
     Route::post('/lessons/{lesson}/complete', [LessonPageController::class, 'complete'])->name('lessons.complete');
     Route::get('/lessons/{lesson}/quiz',[QuizPageController::class, 'show'])->name('quizzes.show');
@@ -43,6 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/lessons/{lesson}/comments', [CommentController::class, 'store'])->name('comments.store');
 
     Route::get('/quiz-attempts/{attempt}', [QuizAttemptController::class, 'show'])->name('quizzes.result');
+
+    Route::get('/leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard.index');
 });
 
 

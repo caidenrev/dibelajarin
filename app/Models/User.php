@@ -24,6 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'email',
         'password',
         'role',
+        'xp',
     ];
 
     protected $hidden = [
@@ -56,7 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     {
         return $this->hasMany(Comment::class);
     }
-    
+
     // ==========================================================
     // TAMBAHKAN METHOD INI UNTUK MEMBERI IZIN AKSES KE FILAMENT
     // ==========================================================

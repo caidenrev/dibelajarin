@@ -46,9 +46,12 @@ class CourseResource extends Resource
                 FileUpload::make('thumbnail')
                     ->image() // Menampilkan preview gambar
                     ->directory('course-thumbnails') // Simpan di folder storage/app/public/course-thumbnails
+                    ->disk('public')
                     ->columnSpanFull(), // Agar lebarnya penuh
                 RichEditor::make('description')
                     ->required()
+                    ->fileAttachmentsDisk('public') // <-- TAMBAHKAN INI
+                    ->fileAttachmentsDirectory('editor-uploads') // <-- TAMBAHKAN INI (opsional tapi disarankan)
                     ->columnSpanFull(),
             ]);
     }

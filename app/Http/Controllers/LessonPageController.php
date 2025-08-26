@@ -54,6 +54,9 @@ class LessonPageController extends Controller
         // Tandai selesai
         $user->completedLessons()->syncWithoutDetaching([$lesson->id]);
 
+        // TAMBAHKAN BARIS INI: Beri 10 XP
+        $user->increment('xp', 10);
+
         // --- LOGIKA LANJUT OTOMATIS ---
         // 1. Ambil semua pelajaran di kursus ini, urutkan berdasarkan ID
         $allLessons = $lesson->course->lessons()->orderBy('id')->get();

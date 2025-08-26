@@ -44,6 +44,9 @@ class QuizPageController extends Controller
             }
         }
 
+        // TAMBAHKAN BARIS INI: Beri 15 XP per jawaban benar
+        Auth::user()->increment('xp', $score * 15);
+
         // Simpan hasil percobaan kuis
         $attempt = QuizAttempt::create([
             'user_id' => Auth::id(),

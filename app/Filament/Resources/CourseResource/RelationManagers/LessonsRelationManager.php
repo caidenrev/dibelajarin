@@ -29,6 +29,8 @@ class LessonsRelationManager extends RelationManager
                     ->maxLength(255),
                 RichEditor::make('content')
                     ->required()
+                    ->fileAttachmentsDisk('public') // <-- Tambahkan ini
+                    ->fileAttachmentsDirectory('editor-uploads') // <-- Tambahkan ini
                     ->columnSpanFull(),
                 FileUpload::make('attachment')
                     ->label('Materi Tambahan (Opsional)')

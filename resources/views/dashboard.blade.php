@@ -30,7 +30,12 @@
                                     </div>
                                 </div>
                                 <div class="mt-6">
-                                    @if ($course->lessons->isNotEmpty())
+                                    @if ($course->progress == 100)
+                                        <a href="{{ route('courses.certificate', $course) }}"
+                                            class="w-full text-center inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                                            Unduh Sertifikat
+                                        </a>
+                                    @elseif ($course->lessons->isNotEmpty())
                                         <a href="{{ route('lessons.show', [$course, $course->lessons->first()]) }}"
                                             class="w-full text-center inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded">
                                             Lanjutkan Belajar
