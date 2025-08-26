@@ -48,8 +48,9 @@ class CourseResource extends Resource
                     ->disk('public')
                     ->directory('course-thumbnails')
                     ->visibility('public')
-                    ->disk('public')
-                    ->columnSpanFull(), // Agar lebarnya penuh
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->maxSize(2048)
+                    ->columnSpanFull(),
                 RichEditor::make('description')
                     ->required()
                     ->fileAttachmentsDisk('public') // <-- TAMBAHKAN INI

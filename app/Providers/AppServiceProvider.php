@@ -22,6 +22,13 @@ class AppServiceProvider extends ServiceProvider
     {
         if (config('app.env') === 'production') {
             URL::forceScheme('https');
+            \Illuminate\Support\Facades\URL::forceRootUrl(config('app.url'));
+            
+            // Force all requests to use HTTPS
+            if (request()->header('x-forwarded-proto') == 'https') {
+                \Illuminate\Support\Facades\URL::forceScheme('https');
+                app('request')->server->set('HTTPS', 'on');
+            }
         }
     }
 }
