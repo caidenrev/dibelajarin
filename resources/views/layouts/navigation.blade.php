@@ -177,6 +177,25 @@
                             <span class="font-medium">Courses</span>
                         </a>
 
+                        <a href="{{ route('leaderboard.index') }}"
+                            class="group relative flex items-center px-4 py-3.5 rounded-xl text-gray-700 dark:text-gray-300 
+                                hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
+                            <div
+                                class="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/5 to-purple-500/5 
+                                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                            <div
+                                class="absolute left-0 w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 
+                                    rounded-r opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                            <svg class="w-5 h-5 mr-3 transition-transform duration-300 group-hover:scale-110"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 17l6-6 4 4 8-8" />
+                            </svg>
+                            <span class="font-medium">Leaderboard</span>
+                        </a>
+
                         <!-- Divider -->
                         <div
                             class="my-6 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent">
