@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     // ==========================================================
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->role === 'admin';
+        return $this->role === 'admin' || $this->role === 'instructor';
     }
 
     /**
