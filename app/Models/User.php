@@ -76,6 +76,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     {
         if ($this->role === 'admin' || $this->role === 'instructor') {
             return true;
+            // bug monyet
         }
         return ! is_null($this->email_verified_at);
     }
