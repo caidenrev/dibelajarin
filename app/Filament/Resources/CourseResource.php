@@ -44,8 +44,10 @@ class CourseResource extends Resource
                     ->unique(Course::class, 'slug', ignoreRecord: true)
                     ->disabled(fn (string $operation): bool => $operation !== 'create'),
                 FileUpload::make('thumbnail')
-                    ->image() // Menampilkan preview gambar
-                    ->directory('course-thumbnails') // Simpan di folder storage/app/public/course-thumbnails
+                    ->image()
+                    ->disk('public')
+                    ->directory('course-thumbnails')
+                    ->visibility('public')
                     ->disk('public')
                     ->columnSpanFull(), // Agar lebarnya penuh
                 RichEditor::make('description')

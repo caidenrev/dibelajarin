@@ -28,6 +28,10 @@ class Course extends Model
         'thumbnail',
     ];
 
+    protected $casts = [
+        'thumbnail' => 'string',
+    ];
+
     protected static function boot()
     {
         parent::boot();
