@@ -93,7 +93,7 @@
                 </div>
                 
                 {{-- == [START] KODE HTML TIM YANG DIMODIFIKASI == --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                 <div class="team-card aspect-square w-full">
                     <div class="card-inner h-full">
                         <div class="team-front shadow-lg rounded-2xl h-full">
@@ -138,30 +138,6 @@
                                 <li><strong>Motto:</strong> "The details are not the details. They make the design."</li>
                             </ul>
                             <button class="toggle-bio-btn mt-6 px-4 py-2 bg-yellow-600 rounded-lg hover:bg-yellow-700 text-white transition-colors duration-300 self-start">Kembali</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-card aspect-square w-full">
-                    <div class="card-inner h-full">
-                        <div class="team-front shadow-lg rounded-2xl h-full">
-                            <img src="{{ asset('images/yudi.png') }}" alt="Foto Yudi Setiawan" class="w-full h-full object-cover transition-transform duration-300 rounded-2xl">
-                            <div class="team-card-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-white">Yudi Setiawan</h3>
-                                    <p class="text-purple-300 font-medium">Fullstack Developer</p>
-                                </div>
-                                <button class="toggle-bio-btn mt-4 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors duration-300 self-start">Lihat Bio</button>
-                            </div>
-                        </div>
-                        <div class="team-back bg-purple-800 text-white p-6 flex flex-col justify-center shadow-lg h-full rounded-2xl">
-                            <h4 class="text-xl font-bold mb-2">Yudi Setiawan</h4>
-                            <ul class="space-y-2 text-slate-300">
-                                <li><strong>Posisi:</strong> Fullstack Developer</li>
-                                <li><strong>Keahlian:</strong> Laravel, React, Docker, CI/CD</li>
-                                <li><strong>Motto:</strong> "First, solve the problem. Then, write the code."</li>
-                            </ul>
-                            <button class="toggle-bio-btn mt-6 px-4 py-2 bg-purple-400 rounded-lg hover:bg-purple-500 transition-colors duration-300 self-start">Kembali</button>
                         </div>
                     </div>
                 </div>
