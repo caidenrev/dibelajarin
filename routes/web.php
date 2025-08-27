@@ -31,6 +31,33 @@ Route::get('/instructors/{user}', [InstructorProfileController::class, 'show'])-
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/check-storage', function () {
+    try {
+        $files = Storage::disk('public')->files('course-thumbnails');
+
+        if (empty($files)) {
+            return response()->json([
+                'status' => 'success',
+                'directory_exists' => Storage::disk('public')->exists('course-thumbnails'),
+                'message' => 'Direktori ditemukan tetapi kosong.',
+                'files' => []
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'File ditemukan.',
+            'files' => $files
+        ]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Terjadi error saat mengakses storage: ' . $e->getMessage()
+        ], 500);
+    }
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
