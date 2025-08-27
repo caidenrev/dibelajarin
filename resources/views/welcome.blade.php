@@ -98,8 +98,8 @@
                         <div class="text-gray-300">Full Materi Gratis</div>
                     </div>
                     <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                        <div class="text-4xl font-bold text-cyan-400 mb-2">Akses Selamanya</div>
-                        <div class="text-gray-300">Tingkat Kepuasan</div>
+                        <div class="text-4xl font-bold text-cyan-400 mb-2">Akses<br>Selamanya</div>
+                        <div class="text-gray-300">Akes Belajar Seumur Hidup</div>
                     </div>
                 </div>
             </div>
