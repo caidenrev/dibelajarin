@@ -49,6 +49,7 @@ class CourseResource extends Resource
                     ->directory('course-thumbnails')
                     ->visibility('public') // <-- Baris ini
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->preserveFilenames() 
                     ->maxSize(2048)
                     ->columnSpanFull(),
                 RichEditor::make('description')
