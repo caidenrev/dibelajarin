@@ -38,6 +38,7 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan storage:link --force",
             "@php artisan package:discover --ansi",
             "@php artisan filament:upgrade"
         ],
