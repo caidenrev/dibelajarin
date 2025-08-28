@@ -22,7 +22,6 @@ Webapp ini dibangun dengan penuh semangat oleh **3 mahasiswa keren dan intelektu
 
 * 🎨 **Eka Revandi** – *Frontend Engineer*
 * ⚙️ **Fredy Fajar** – *Backend Engineer*
-* 🛠️ **Yudi Setiawan** – *Fullstack Developer*
 
 ---
 
