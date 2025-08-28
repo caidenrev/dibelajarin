@@ -1,4 +1,4 @@
-# 📚 DiBelajar.In
+![Platform Belajar Online Gratis](./DiBelajar.In.png)
 
 **DiBelajar.In** adalah sebuah **webapp pembelajaran gratis** yang dipersembahkan khusus untuk generasi muda Indonesia.
 Kami percaya bahwa **pendidikan adalah hak semua orang**, dan teknologi adalah jembatan untuk mencapainya.

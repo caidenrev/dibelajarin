@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+// pepek
 
 // 2. TAMBAHKAN 'implements ShouldQueue' DI SINI
 class VerifyEmail extends Notification implements ShouldQueue
