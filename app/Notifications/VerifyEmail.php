@@ -3,11 +3,13 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+// 1. PASTIKAN INI DI-IMPORT
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class VerifyEmail extends Notification
+// 2. TAMBAHKAN 'implements ShouldQueue' DI SINI
+class VerifyEmail extends Notification implements ShouldQueue
 {
     use Queueable;
 
