@@ -7,6 +7,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 // ==========================
 
+use App\Notifications\VerifyEmail as VerifyEmailNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -67,6 +68,16 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     }
 
     /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailNotification);
+    }
+
+    /**
      * Menentukan apakah user sudah memverifikasi alamat email mereka.
      * Admin akan selalu dianggap sudah terverifikasi.
      *
@@ -76,7 +87,6 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     {
         if ($this->role === 'admin' || $this->role === 'instructor') {
             return true;
-            // bug monyet
         }
         return ! is_null($this->email_verified_at);
     }
