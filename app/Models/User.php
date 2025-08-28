@@ -8,15 +8,15 @@ use Filament\Panel;
 // ==========================
 
 use App\Notifications\VerifyEmail as VerifyEmailNotification;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// Hapus 'use Illuminate\Contracts\Auth\MustVerifyEmail;' karena tidak lagi digunakan
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-// PASTIKAN ADA IMPLEMENTS FILAMENTUSER
-class User extends Authenticatable implements MustVerifyEmail, FilamentUser
+// Hapus 'MustVerifyEmail' dari baris implements
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
 
@@ -60,7 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     }
 
     // ==========================================================
-    // TAMBAHKAN METHOD INI UNTUK MEMBERI IZIN AKSES KE FILAMENT
+    // METHOD UNTUK MEMBERI IZIN AKSES KE FILAMENT
     // ==========================================================
     public function canAccessPanel(Panel $panel): bool
     {
@@ -74,20 +74,19 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
      */
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new VerifyEmailNotification);
+        // Fungsi ini bisa dikosongkan atau biarkan saja, karena tidak akan dipanggil lagi
+        // $this->notify(new VerifyEmailNotification);
     }
 
     /**
      * Menentukan apakah user sudah memverifikasi alamat email mereka.
-     * Admin akan selalu dianggap sudah terverifikasi.
+     * Diubah agar selalu mengembalikan true.
      *
      * @return bool
      */
     public function hasVerifiedEmail(): bool
     {
-        if ($this->role === 'admin' || $this->role === 'instructor') {
-            return true;
-        }
-        return ! is_null($this->email_verified_at);
+        // Langsung kembalikan true agar semua user dianggap terverifikasi
+        return true;
     }
 }

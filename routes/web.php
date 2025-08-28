@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CoursePageController;
 use App\Http\Controllers\EnrollmentController;
@@ -28,8 +29,9 @@ Route::get('/courses/{course}', [CoursePageController::class, 'show'])->name('co
 
 Route::get('/instructors/{user}', [InstructorProfileController::class, 'show'])->name('instructors.show');
 
+// Middleware 'verified' telah dihapus dari baris di bawah ini
 Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('dashboard');
+    ->middleware(['auth'])->name('dashboard');
 
 Route::get('/check-storage', function () {
     try {
