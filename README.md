@@ -1,4 +1,4 @@
-![Platform Belajar Online Gratis](./DiBelajar.In.png)
+# 📚 DiBelajar.In
 
 **DiBelajar.In** adalah sebuah **webapp pembelajaran gratis** yang dipersembahkan khusus untuk generasi muda Indonesia.
 Kami percaya bahwa **pendidikan adalah hak semua orang**, dan teknologi adalah jembatan untuk mencapainya.
@@ -9,10 +9,10 @@ Kami percaya bahwa **pendidikan adalah hak semua orang**, dan teknologi adalah j
 
 ## 🚀 Fitur Utama
 
-* ✅ **Kelas Gratis** – Belajar berbagai topik tanpa biaya.
-* ✅ **Antarmuka Modern** – Desain ramah pengguna dan responsif.
-* ✅ **Materi Berkualitas** – Disusun dengan kurasi dan mudah dipahami.
-* ✅ **Akses Mudah** – Bisa diakses dari mana saja, kapan saja.
+-   ✅ **Kelas Gratis** – Belajar berbagai topik tanpa biaya.
+-   ✅ **Antarmuka Modern** – Desain ramah pengguna dan responsif.
+-   ✅ **Materi Berkualitas** – Disusun dengan kurasi dan mudah dipahami.
+-   ✅ **Akses Mudah** – Bisa diakses dari mana saja, kapan saja.
 
 ---
 
@@ -20,8 +20,9 @@ Kami percaya bahwa **pendidikan adalah hak semua orang**, dan teknologi adalah j
 
 Webapp ini dibangun dengan penuh semangat oleh **3 mahasiswa keren dan intelektual**:
 
-* 🎨 **Eka Revandi** – *Frontend Engineer*
-* ⚙️ **Fredy Fajar** – *Backend Engineer*
+-   🎨 **Eka Revandi** – _Frontend Engineer_
+-   ⚙️ **Fredy Fajar** – _Backend Engineer_
+-   🛠️ **Yudi Setiawan** – _Fullstack Developer_
 
 ---
 
@@ -29,18 +30,18 @@ Webapp ini dibangun dengan penuh semangat oleh **3 mahasiswa keren dan intelektu
 
 Menjadi wadah pembelajaran gratis yang dapat mendorong lahirnya generasi muda Indonesia yang:
 
-* 🔥 Berwawasan luas
-* 💡 Melek teknologi
-* 🌍 Siap bersaing di kancah global
+-   🔥 Berwawasan luas
+-   💡 Melek teknologi
+-   🌍 Siap bersaing di kancah global
 
 ---
 
 ## 📌 Teknologi yang Digunakan
 
-* **Frontend:** React.js / TailwindCSS
-* **Backend:** Laravel / Node.js
-* **Database:** MySQL / PostgreSQL
-* **Deployment:** Vercel / Railway / VPS
+-   **Frontend:** React.js / TailwindCSS
+-   **Backend:** Laravel / Node.js
+-   **Database:** MySQL / PostgreSQL
+-   **Deployment:** Vercel / Railway / VPS
 
 ---
 
@@ -57,6 +58,6 @@ Jika kamu suka dengan misi kami, bantu sebarkan **DiBelajar.In** ke lebih banyak
 
 ---
 
-🔥 *"Pendidikan adalah senjata paling ampuh untuk mengubah dunia."* – Nelson Mandela
+🔥 _"Pendidikan adalah senjata paling ampuh untuk mengubah dunia."_ – Nelson Mandela
 
 ---
