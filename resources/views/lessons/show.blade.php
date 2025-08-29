@@ -52,7 +52,7 @@
                                     : 'bg-slate-800 text-gray-300 hover:bg-slate-700' }}">
                                 <span class="truncate">{{ $loop->iteration }}. {{ $item->title }}</span>
                                 @if (auth()->user()->completedLessons->contains($item))
-                                    <span class="text-green-400">✅</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-1 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                 @endif
                             </a>
                         </li>
@@ -95,7 +95,7 @@
                     <div class="mt-6 pt-6 border-t border-slate-700">
                         @if (auth()->user()->completedLessons->contains($lesson))
                             <div class="text-center bg-green-500 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-                                Pelajaran Telah Selesai ✅
+                                Pelajaran Telah Selesai ✓
                             </div>
                         @else
                             <form action="{{ route('lessons.complete', $lesson) }}" method="POST">
