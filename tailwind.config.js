@@ -1,26 +1,32 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
-import preset from './vendor/filament/filament/tailwind.config.preset'; // Tambahkan ini
+// tailwind.config.js
+import defaultTheme from "tailwindcss/defaultTheme";
+import forms from "@tailwindcss/forms";
+import typography from "@tailwindcss/typography"; // <--- 1. TAMBAHKAN BARIS INI
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    presets: [preset], // Tambahkan ini
     content: [
-        './app/Filament/**/*.php', // Tambahkan ini
-        './resources/views/filament/**/*.blade.php', // Tambahkan ini
-        './vendor/filament/**/*.blade.php', // Tambahkan ini
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./storage/framework/views/*.php",
+        "./resources/views/**/*.blade.php",
     ],
 
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+            },
+            keyframes: {
+                enter: {
+                    "0%": { transform: "translateY(20px)", opacity: "0" },
+                    "100%": { transform: "translateY(0)", opacity: "1" },
+                },
+            },
+            animation: {
+                enter: "enter 0.5s ease-out forwards",
             },
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, typography], // <--- 2. TAMBAHKAN 'typography' DI SINI
 };
