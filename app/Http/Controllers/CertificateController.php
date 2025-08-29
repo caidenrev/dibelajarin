@@ -30,15 +30,15 @@ class CertificateController extends Controller
         }
 
         // 2. Cek apakah user sudah menyelesaikan 100% pelajaran
+        // Menggunakan relasi untuk konsistensi dan menghindari masalah floating point.
         $totalLessons = $course->lessons()->count();
-        $completedLessons = Progress::where('user_id', $user->id)
-            ->whereIn('lesson_id', $course->lessons()->pluck('id'))
-            ->where('completed', true)
-            ->count();
-        
-        $progress = ($totalLessons > 0) ? ($completedLessons / $totalLessons) * 100 : 0;
+        $completedLessonsCount = $user->completedLessons()
+                                     ->where('course_id', $course->id)
+                                     ->count();
 
-        if ($progress < 100) {
+        // Bandingkan jumlahnya secara langsung untuk menghindari masalah presisi floating point
+        // dan pastikan ada pelajaran di kursus tersebut untuk bisa mengunduh sertifikat.
+        if ($totalLessons === 0 || $completedLessonsCount < $totalLessons) {
             abort(403, 'Anda harus menyelesaikan semua pelajaran terlebih dahulu.');
         }
         // --- Akhir Logika Keamanan ---
