@@ -18,7 +18,7 @@ Kami percaya bahwa **pendidikan adalah hak semua orang**, dan teknologi adalah j
 
 ## 👨‍💻 Tim Pengembang
 
-Webapp ini dibangun dengan penuh semangat oleh **3 mahasiswa keren dan intelektual**:
+Webapp ini dibangun dengan penuh semangat oleh **2 mahasiswa keren dan intelektual**:
 
 * 🎨 **Eka Revandi** – *Frontend Engineer*
 * ⚙️ **Fredy Fajar** – *Backend Engineer*
