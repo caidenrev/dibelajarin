@@ -44,16 +44,16 @@ class CourseResource extends Resource
                     ->required()
                     ->unique(Course::class, 'slug', ignoreRecord: true)
                     ->disabled(fn (string $operation): bool => $operation !== 'create'),
+                FileUpload::make('thumbnail')
+                    ->image()
+                    ->disk('public')
+                    ->directory('course-thumbnails')
+                    ->visibility('public'),
                 RichEditor::make('description')
                     ->required()
                     ->fileAttachmentsDisk('public')
                     ->fileAttachmentsDirectory('editor-uploads')
                     ->fileAttachmentsVisibility('public')
-                    ->disableToolbarButtons([
-                        'attachFiles',
-                        'codeBlock',
-                    ]),
-                FileUpload::make('thumbnail')
                     ->image()
                     ->disk('public')
                     ->directory('course-thumbnails')

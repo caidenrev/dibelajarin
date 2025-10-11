@@ -12,15 +12,21 @@ class HandleFileUploads
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->hasHeader('X-Filament')) {
-            // Set maximum execution time to 5 minutes for file uploads
-            set_time_limit(300);
+            // Basic upload settings
+            set_time_limit(120);
+            ini_set('memory_limit', '128M');
             
-            // Set larger memory limit for uploads
-            ini_set('memory_limit', '256M');
+            // Ensure upload directory exists and is writable
+            $uploadDir = storage_path('app/public/livewire-tmp');
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
             
-            // Increased upload limits
-            ini_set('upload_max_filesize', '10M');
-            ini_set('post_max_size', '20M');
+            // Set proper headers for CORS and content type
+            if (app()->environment('production')) {
+                $request->headers->set('X-Forwarded-Proto', 'https');
+                $request->headers->set('Access-Control-Allow-Origin', '*');
+            }
             
             // Add upload throttling
             if (!session()->has('last_upload')) {
