@@ -60,9 +60,7 @@ class CourseResource extends Resource
                     ]),
                 RichEditor::make('description')
                     ->required()
-                    ->disk('public')
-                    ->directory('editor-uploads')
-                    ->fileAttachmentsVisibility('public')
+                    ->fileAttachmentsDisk('public')
                     ->fileAttachmentsDirectory('editor-uploads')
                     ->toolbarButtons([
                         'attachFiles',
