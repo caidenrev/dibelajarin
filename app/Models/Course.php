@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Course extends Model
@@ -27,6 +28,22 @@ class Course extends Model
         'category_id',
         'thumbnail',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::deleting(function ($course) {
+            // Delete the thumbnail file when the course is deleted
+            if ($course->thumbnail) {
+                Storage::disk('public')->delete($course->thumbnail);
+            }
+        });
+
+        static::creating(function ($course) {
+            $course->slug = Str::slug($course->title);
+        });
+    }
 
     protected $casts = [
         'thumbnail' => 'string',
@@ -55,14 +72,6 @@ class Course extends Model
         }
         
         return asset('storage/' . $path);
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($course) {
-            $course->slug = Str::slug($course->title);
-        });
     }
 
     /**

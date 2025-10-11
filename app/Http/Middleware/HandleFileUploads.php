@@ -47,7 +47,9 @@ class HandleFileUploads
             $path = storage_path($directory);
             if (!file_exists($path)) {
                 try {
-                    mkdir($path, 0755, true);
+                    if (!mkdir($path, 0777, true) && !is_dir($path)) {
+                        throw new \RuntimeException(sprintf('Directory "%s" could not be created', $path));
+                    }
                 } catch (\Exception $e) {
                     \Log::error("Failed to create directory {$directory}: " . $e->getMessage());
                 }
