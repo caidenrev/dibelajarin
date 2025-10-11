@@ -47,15 +47,38 @@ class CourseResource extends Resource
                     ->image()
                     ->disk('public')
                     ->directory('course-thumbnails')
-                    ->visibility('public') // <-- Baris ini
+                    ->visibility('public')
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->preserveFilenames() 
+                    ->preserveFilenames()
                     ->maxSize(2048)
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ]),
                 RichEditor::make('description')
                     ->required()
-                    ->fileAttachmentsDisk('public') // <-- TAMBAHKAN INI
-                    ->fileAttachmentsDirectory('editor-uploads') // <-- TAMBAHKAN INI (opsional tapi disarankan)
+                    ->disk('public')
+                    ->directory('editor-uploads')
+                    ->fileAttachmentsVisibility('public')
+                    ->fileAttachmentsDirectory('editor-uploads')
+                    ->toolbarButtons([
+                        'attachFiles',
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'undo',
+                    ])
                     ->columnSpanFull(),
             ]);
     }
