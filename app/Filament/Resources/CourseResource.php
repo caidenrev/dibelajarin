@@ -49,8 +49,6 @@ class CourseResource extends Resource
                     ->fileAttachmentsDisk('public')
                     ->fileAttachmentsDirectory('editor-uploads')
                     ->fileAttachmentsVisibility('public')
-                    ->maxFileSize(512)
-                    ->acceptedFileTypes(['image/jpeg', 'image/png'])
                     ->disableToolbarButtons([
                         'attachFiles',
                         'codeBlock',
