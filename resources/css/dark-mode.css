@@ -1,0 +1,43 @@
+/* Force dark mode */
+:root {
+    color-scheme: dark !important;
+}
+
+/* Force dark mode for iOS */
+@media (prefers-color-scheme: light) {
+    html {
+        color-scheme: dark !important;
+    }
+    
+    body {
+        background-color: #111827 !important;
+        color: #fff !important;
+    }
+
+    /* Force dark navbar */
+    nav, .navbar, header {
+        background-color: #1f2937 !important;
+        color: #fff !important;
+    }
+
+    /* Force dark content */
+    .bg-white {
+        background-color: #1f2937 !important;
+    }
+
+    /* Force dark text */
+    .text-gray-900 {
+        color: #fff !important;
+    }
+}
+
+/* iOS specific dark mode fixes */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-color: #111827 !important;
+    }
+    
+    nav, .navbar, header {
+        background-color: #1f2937 !important;
+    }
+}

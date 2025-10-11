@@ -26,6 +26,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20">
                     <div class="flex items-center">
+                        <img src="" alt="">
                         <a href="/" class="flex items-center space-x-3 group">
                             <span class="text-xl lg:text-4xl md:text-2xl sm:text-2xl font-bold text-white drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)]">
                                 Di<span class="text-blue-400 drop-shadow-[1px_1px_5px_rgba(0,0,0,0.8)]">Belajar</span>.In
