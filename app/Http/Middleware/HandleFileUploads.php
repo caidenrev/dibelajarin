@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Storage;
 
 class HandleFileUploads
 {
@@ -22,8 +23,41 @@ class HandleFileUploads
                 $request->headers->set('X-Forwarded-Proto', 'https');
                 $request->server->set('HTTPS', 'on');
             }
+
+            // Ensure storage directories exist and are writable
+            $this->ensureStorageDirectoriesExist();
         }
 
         return $next($request);
+    }
+
+    protected function ensureStorageDirectoriesExist()
+    {
+        $directories = [
+            'app/public',
+            'app/public/course-thumbnails',
+            'app/public/editor-uploads',
+            'framework/views',
+            'framework/cache',
+            'framework/sessions',
+            'logs'
+        ];
+
+        foreach ($directories as $directory) {
+            $path = storage_path($directory);
+            if (!file_exists($path)) {
+                mkdir($path, 0775, true);
+            }
+            chmod($path, 0775);
+        }
+
+        // Ensure storage link exists
+        $publicPath = public_path('storage');
+        if (!file_exists($publicPath)) {
+            app('files')->link(
+                storage_path('app/public'),
+                public_path('storage')
+            );
+        }
     }
 }
