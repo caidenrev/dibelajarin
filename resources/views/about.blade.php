@@ -101,7 +101,7 @@
                             <div class="team-card-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                                 <div>
                                     <h3 class="text-2xl font-bold text-white">Fredy Fajar</h3>
-                                    <p class="text-blue-300 font-medium">System Engineer</p>
+                                    <p class="text-blue-300 font-medium">System Engineer | Founder diBelajar.In</p>
                                 </div>
                                 <button class="toggle-bio-btn mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300 self-start">Lihat Bio</button>
                             </div>
@@ -110,8 +110,9 @@
                             <h4 class="text-xl font-bold mb-2">Fredy Fajar</h4>
                             <ul class="space-y-2 text-slate-300">
                                 <li><strong>Posisi:</strong> Backend Engineer | Founder</li>
-                                <li><strong>Keahlian:</strong> PHP, Laravel, Node.js, MySQL</li>
+                                <li><strong>Keahlian:</strong> PHP, Laravel, Node.js, MySQL, PostgreSQL</li>
                                 <li><strong>Motto:</strong> "Clean code always looks like it was written by someone who cares."</li>
+                                <button class="toggle-bio-btn mt-6 px-4 py-2 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors duration-300 self-start"><a href="https://www.linkedin.com/in/fredyfajar/" target="_blank">LinkedIn</a></button>
                             </ul>
                             <button class="toggle-bio-btn mt-6 px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors duration-300 self-start">Kembali</button>
                         </div>
@@ -125,7 +126,7 @@
                             <div class="team-card-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
                                 <div>
                                     <h3 class="text-2xl font-bold text-white">Eka Revandi</h3>
-                                    <p class="text-orange-300 font-medium">Software Engineer | Founder</p>
+                                    <p class="text-orange-300 font-medium">Software Engineer | Cloud Engineer | Founder diBelajar.In</p>
                                 </div>
                                 <button class="toggle-bio-btn mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300 self-start">Lihat Bio</button>
                             </div>
@@ -133,10 +134,12 @@
                         <div class="team-back bg-orange-900 text-white p-6 flex flex-col justify-center shadow-lg h-full rounded-2xl">
                             <h4 class="text-xl font-bold mb-2">Eka Revandi</h4>
                             <ul class="space-y-2 text-white">
-                                <li><strong>CallName:</strong> Revan</li>
+                                <li><strong>Panggilan:</strong> Revan</li>
                                 <li><strong>Posisi:</strong> Frontend Engineer</li>
-                                <li><strong>Keahlian:</strong> React.js, Next.js, AWS, Cloud Engineer</li>
+                                <li><strong>Keahlian:</strong> React.js, Next.js, AWS, Google Cloud Platform, Tailwind, Figma</li>
                                 <li><strong>Motto:</strong> "The best way to predict the future is to create it."</li>
+                                <button class="toggle-bio-btn mt-6 px-4 py-2 bg-orange-100 rounded-lg hover:bg-orange-200 transition-colors duration-300 self-start"><a href="https://www.linkedin.com/in/caidenrev/" target="_blank">LinkedIn</a></button>
+                                
                             </ul>
                             <button class="toggle-bio-btn mt-6 px-4 py-2 bg-yellow-600 rounded-lg hover:bg-yellow-700 text-white transition-colors duration-300 self-start">Kembali</button>
                         </div>
