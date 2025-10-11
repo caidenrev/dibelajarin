@@ -13,7 +13,6 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use App\Filament\Resources\CourseResource\RelationManagers;
@@ -48,48 +47,15 @@ class CourseResource extends Resource
                     ->image()
                     ->disk('public')
                     ->directory('course-thumbnails')
-                    ->visibility('public'),
-                RichEditor::make('description')
-                    ->required()
-                    ->fileAttachmentsDisk('public')
-                    ->fileAttachmentsDirectory('editor-uploads')
-                    ->fileAttachmentsVisibility('public')
-                    ->image()
-                    ->disk('public')
-                    ->directory('course-thumbnails')
-                    ->visibility('public')
-                    ->maxSize(512) // Reduce to 512KB
-                    ->acceptedFileTypes(['image/jpeg', 'image/png'])
-                    ->imageResizeMode('cover')
-                    ->imageResizeTargetWidth('600')
-                    ->imageResizeTargetHeight('400')
-                    ->imageResizeUpscale(false)
+                    ->visibility('public') // <-- Baris ini
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->imageResizeMode('cover')
-                    ->imageCropAspectRatio('16:9')
-                    ->imageResizeTargetWidth('1920')
-                    ->imageResizeTargetHeight('1080')
+                    ->preserveFilenames() 
                     ->maxSize(2048)
                     ->columnSpanFull(),
                 RichEditor::make('description')
                     ->required()
-                    ->fileAttachmentsDisk('public')
-                    ->fileAttachmentsDirectory('editor-uploads')
-                    ->toolbarButtons([
-                        'attachFiles',
-                        'blockquote',
-                        'bold',
-                        'bulletList',
-                        'codeBlock',
-                        'h2',
-                        'h3',
-                        'italic',
-                        'link',
-                        'orderedList',
-                        'redo',
-                        'strike',
-                        'undo',
-                    ])
+                    ->fileAttachmentsDisk('public') // <-- TAMBAHKAN INI
+                    ->fileAttachmentsDirectory('editor-uploads') // <-- TAMBAHKAN INI (opsional tapi disarankan)
                     ->columnSpanFull(),
             ]);
     }
