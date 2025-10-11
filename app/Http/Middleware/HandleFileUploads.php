@@ -46,18 +46,27 @@ class HandleFileUploads
         foreach ($directories as $directory) {
             $path = storage_path($directory);
             if (!file_exists($path)) {
-                mkdir($path, 0775, true);
+                try {
+                    mkdir($path, 0755, true);
+                } catch (\Exception $e) {
+                    \Log::error("Failed to create directory {$directory}: " . $e->getMessage());
+                }
             }
-            chmod($path, 0775);
         }
 
         // Ensure storage link exists
         $publicPath = public_path('storage');
         if (!file_exists($publicPath)) {
-            app('files')->link(
-                storage_path('app/public'),
-                public_path('storage')
-            );
+            try {
+                if (!file_exists(storage_path('app/public'))) {
+                    mkdir(storage_path('app/public'), 0755, true);
+                }
+                if (file_exists(storage_path('app/public')) && !file_exists(public_path('storage'))) {
+                    symlink(storage_path('app/public'), public_path('storage'));
+                }
+            } catch (\Exception $e) {
+                \Log::error('Failed to create storage link: ' . $e->getMessage());
+            }
         }
     }
 }

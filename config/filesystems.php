@@ -41,8 +41,17 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
-            'throw' => true,
-            'report' => true,
+            'throw' => false,
+            'permissions' => [
+                'file' => [
+                    'public' => 0644,
+                    'private' => 0644,
+                ],
+                'dir' => [
+                    'public' => 0755,
+                    'private' => 0755,
+                ],
+            ],
         ],
 
         // in config/filesystems.php

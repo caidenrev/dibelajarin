@@ -49,22 +49,30 @@ class AppServiceProvider extends ServiceProvider
         $storagePath = storage_path();
         $publicPath = public_path('storage');
 
-        // Ensure storage directory exists and is writable
+        // Ensure storage directory exists
         if (!file_exists($storagePath)) {
-            mkdir($storagePath, 0775, true);
+            try {
+                mkdir($storagePath, 0755, true);
+            } catch (\Exception $e) {
+                \Log::error('Failed to create storage directory: ' . $e->getMessage());
+            }
         }
-        chmod($storagePath, 0775);
 
-        // Ensure public storage directory exists and is writable
+        // Ensure public storage directory exists
         if (!file_exists($publicPath)) {
-            mkdir($publicPath, 0775, true);
+            try {
+                mkdir($publicPath, 0755, true);
+            } catch (\Exception $e) {
+                \Log::error('Failed to create public storage directory: ' . $e->getMessage());
+            }
         }
-        chmod($publicPath, 0775);
 
         // Create storage link if it doesn't exist
         if (!file_exists(public_path('storage'))) {
             try {
-                \Illuminate\Support\Facades\Artisan::call('storage:link');
+                if (file_exists(storage_path('app/public')) && !file_exists(public_path('storage'))) {
+                    symlink(storage_path('app/public'), public_path('storage'));
+                }
             } catch (\Exception $e) {
                 \Log::error('Failed to create storage link: ' . $e->getMessage());
             }
