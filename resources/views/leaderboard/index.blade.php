@@ -37,6 +37,7 @@
                                     @if($loop->iteration == 2) {{-- Silver (2nd place) --}}
                                         <div class="flex flex-col items-center">
                                             <div class="bg-slate-600/50 rounded-xl p-4 mb-3 min-w-[140px] text-center transform hover:scale-105 transition-all duration-200">
+                                                {{-- class --}}
                                                 <div class="text-4xl mb-2">🥈</div>
                                                 <h5 class="font-bold text-white text-sm mb-1 truncate">{{ $student->name }}</h5>
                                                 <p class="text-sky-400 font-semibold text-xs">{{ number_format($student->xp) }} XP</p>

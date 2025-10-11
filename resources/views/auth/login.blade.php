@@ -12,7 +12,7 @@
                     <p class="mt-2 text-blue-300">Welcome back! Please login to continue</p>
                 </div>
 
-                {{-- Session Status --}}z
+                {{-- Session Status --}}
                 <x-auth-session-status class="mb-4 text-center text-green-400" :status="session('status')" />
 
                 <form method="POST" action="{{ route('login') }}" class="mt-8 space-y-6">
