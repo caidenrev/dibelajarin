@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use App\Filament\Resources\CourseResource\RelationManagers;
@@ -43,18 +44,28 @@ class CourseResource extends Resource
                     ->required()
                     ->unique(Course::class, 'slug', ignoreRecord: true)
                     ->disabled(fn (string $operation): bool => $operation !== 'create'),
+                RichEditor::make('description')
+                    ->required()
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('editor-uploads')
+                    ->fileAttachmentsVisibility('public')
+                    ->maxFileSize(512)
+                    ->acceptedFileTypes(['image/jpeg', 'image/png'])
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                    ]),
                 FileUpload::make('thumbnail')
                     ->image()
                     ->disk('public')
                     ->directory('course-thumbnails')
                     ->visibility('public')
-                    ->maxSize(1024) // Reduce to 1MB to handle server limitations
+                    ->maxSize(512) // Reduce to 512KB
                     ->acceptedFileTypes(['image/jpeg', 'image/png'])
-                    ->imageResizeTargetWidth('800')
-                    ->imageResizeTargetHeight('600')
-                    ->panelAspectRatio('16:9')
-                    ->downloadable()
-                    ->previewable()
+                    ->imageResizeMode('cover')
+                    ->imageResizeTargetWidth('600')
+                    ->imageResizeTargetHeight('400')
+                    ->imageResizeUpscale(false)
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                     ->imageResizeMode('cover')
                     ->imageCropAspectRatio('16:9')
