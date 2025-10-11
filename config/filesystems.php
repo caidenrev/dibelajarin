@@ -41,11 +41,11 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
-            'throw' => true,
+            'throw' => false,
             'permissions' => [
                 'file' => [
-                    'public' => 0666,
-                    'private' => 0666,
+                    'public' => 0644,
+                    'private' => 0644,
                 ],
                 'dir' => [
                     'public' => 0755,

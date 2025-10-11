@@ -20,14 +20,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Memaksa skema menjadi https jika env adalah production
+        // Force HTTPS in production and handle asset/storage URLs
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
-            \Illuminate\Support\Facades\URL::forceRootUrl(config('app.url'));
             
+            // Ensure proper root URL is set
+            $rootUrl = rtrim(config('app.url'), '/');
+            URL::forceRootUrl($rootUrl);
+            
+            // Handle assets and storage URLs
             if (request()->server('HTTP_X_FORWARDED_PROTO') === 'https' || request()->server('HTTPS') === 'on') {
                 request()->server->set('HTTPS', 'on');
-                // Force asset URLs to use HTTPS
+                
+                // Update storage URL for production
+                config(['filesystems.disks.public.url' => $rootUrl . '/storage']);
                 $this->app['request']->server->set('HTTPS', true);
             }
 

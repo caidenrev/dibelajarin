@@ -12,16 +12,23 @@ class HandleFileUploads
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->hasHeader('X-Filament')) {
-            // Set maximum execution time to 5 minutes for file uploads
-            set_time_limit(300);
+            // Set maximum execution time to 2 minutes for file uploads (Sevalla limitation)
+            set_time_limit(120);
             
-            // Increase memory limit for large file uploads
-            ini_set('memory_limit', '256M');
+            // Set memory limit for uploads
+            ini_set('memory_limit', '128M');
+            
+            // Adjust upload limits for Sevalla
+            ini_set('upload_max_filesize', '2M');
+            ini_set('post_max_size', '8M');
             
             // Force HTTPS for file uploads in production
             if (app()->environment('production')) {
                 $request->headers->set('X-Forwarded-Proto', 'https');
                 $request->server->set('HTTPS', 'on');
+                
+                // Ensure proper URL scheme in production
+                config(['app.url' => url('')]); 
             }
 
             // Ensure storage directories exist and are writable
