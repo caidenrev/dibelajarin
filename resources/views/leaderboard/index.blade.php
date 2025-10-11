@@ -66,33 +66,13 @@
                             </div>
 
                             <!-- Mobile Top 3 Cards -->
+                                                        <!-- Mobile Top 3 Cards -->
                             <div class="md:hidden space-y-3 mb-6">
                                 @foreach($topStudents->take(3) as $student)
-                                    <div class="flex items-center gap-4 
-                                        @if($loop->iteration == 1) bg-gradient-to-r from-yellow-600/20 to-yellow-500/10 border border-yellow-500/30
-                                        @elseif($loop->iteration == 2) bg-slate-600/30 border border-slate-500/30
-                                        @else bg-orange-800/20 border border-orange-700/30 @endif
-                                        rounded-xl p-3 sm:p-4">
-                                        
-                                        <div class="text-2xl sm:text-3xl flex-shrink-0">
-                                            {{ ['🥇', '🥈', '🥉'][$loop->iteration - 1] }}
-                                        </div>
-                                        
-                                        <div class="flex-1 min-w-0">
-                                            <h5 class="font-bold 
-                                                @if($loop->iteration == 1) text-yellow-300
-                                                @else text-white @endif 
-                                                text-sm sm:text-base truncate">{{ $student->name }}</h5>
-                                            <p class="text-slate-400 text-xs sm:text-sm">#{{ $loop->iteration }} Posisi</p>
-                                        </div>
-                                        
-                                        <div class="text-right flex-shrink-0">
-                                            <p class="text-sky-400 font-bold text-sm sm:text-base">{{ number_format($student->xp) }}</p>
-                                            <p class="text-sky-500 text-xs">XP</p>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                                    <div class="flex items-center gap-4 backdrop-blur-sm border rounded-xl p-3 sm:p-4
+                                        {{ $loop->iteration == 1 ? 'dark:bg-yellow-900/30 dark:border-yellow-500/30' : 
+                                           ($loop->iteration == 2 ? 'dark:bg-slate-800/50 dark:border-slate-600/30' : 
+                                           'dark:bg-orange-900/30 dark:border-orange-700/30') }}">
                         </div>
                     @endif
 
@@ -153,11 +133,11 @@
                         <!-- Mobile Card List -->
                         <div class="sm:hidden space-y-3">
                             @forelse ($topStudents as $student)
-                                <div class="flex items-center gap-3 bg-slate-700/30 hover:bg-slate-700/50 rounded-xl p-3 transition-colors duration-200
+                                <div class="flex items-center gap-3 dark:bg-slate-800/40 hover:dark:bg-slate-700/50 rounded-xl p-3 transition-colors duration-200
                                     @if($loop->iteration <= 3) border-l-4 @endif
-                                    @if($loop->iteration == 1) border-l-yellow-500
-                                    @elseif($loop->iteration == 2) border-l-slate-400
-                                    @elseif($loop->iteration == 3) border-l-orange-600 @endif">
+                                    {{ $loop->iteration == 1 ? 'dark:border-l-yellow-500/70' : 
+                                       ($loop->iteration == 2 ? 'dark:border-l-slate-400/70' : 
+                                       ($loop->iteration == 3 ? 'dark:border-l-orange-600/70' : '')) }}">
                                     
                                     <div class="flex-shrink-0">
                                         @if ($loop->iteration <= 3)
