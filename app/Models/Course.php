@@ -40,7 +40,21 @@ class Course extends Model
         if (!$this->thumbnail) {
             return null;
         }
-        return asset('storage/' . $this->thumbnail);
+        
+        // Handle URLs that are already absolute
+        if (filter_var($this->thumbnail, FILTER_VALIDATE_URL)) {
+            return $this->thumbnail;
+        }
+
+        // Handle relative paths
+        $path = str_replace('public/', '', $this->thumbnail);
+        $path = str_replace('//', '/', $path);
+        
+        if (app()->environment('production')) {
+            return secure_asset('storage/' . $path);
+        }
+        
+        return asset('storage/' . $path);
     }
 
     protected static function boot()

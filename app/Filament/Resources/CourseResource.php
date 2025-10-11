@@ -49,15 +49,12 @@ class CourseResource extends Resource
                     ->directory('course-thumbnails')
                     ->visibility('public')
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->preserveFilenames()
+                    ->imageResizeMode('cover')
+                    ->imageCropAspectRatio('16:9')
+                    ->imageResizeTargetWidth('1920')
+                    ->imageResizeTargetHeight('1080')
                     ->maxSize(2048)
-                    ->columnSpanFull()
-                    ->imageEditor()
-                    ->imageEditorAspectRatios([
-                        '16:9',
-                        '4:3',
-                        '1:1',
-                    ]),
+                    ->columnSpanFull(),
                 RichEditor::make('description')
                     ->required()
                     ->fileAttachmentsDisk('public')
