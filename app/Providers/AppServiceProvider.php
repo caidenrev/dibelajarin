@@ -31,9 +31,21 @@ class AppServiceProvider extends ServiceProvider
             // Handle assets and storage URLs
             if (request()->server('HTTP_X_FORWARDED_PROTO') === 'https' || request()->server('HTTPS') === 'on') {
                 request()->server->set('HTTPS', 'on');
-                
-                // Update storage URL for production
-                config(['filesystems.disks.public.url' => $rootUrl . '/storage']);
+            }
+
+            // Create storage link if it doesn't exist
+            $publicPath = public_path('storage');
+            $storagePath = storage_path('app/public');
+            
+            if (!file_exists($publicPath) && file_exists($storagePath)) {
+                try {
+                    symlink($storagePath, $publicPath);
+                } catch (\Exception $e) {
+                    // If symlink fails, try directory copy
+                    if (!file_exists($publicPath)) {
+                        mkdir($publicPath, 0755, true);
+                    }
+                }
                 $this->app['request']->server->set('HTTPS', true);
             }
 
