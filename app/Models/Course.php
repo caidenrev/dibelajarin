@@ -68,3 +68,4 @@ class Course extends Model
         return 'slug';
     }
 }
+// oke
