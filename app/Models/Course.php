@@ -32,6 +32,8 @@ class Course extends Model
         'thumbnail' => 'string',
     ];
 
+    protected $appends = ['thumbnail_url'];
+
     protected static function boot()
     {
         parent::boot();
@@ -66,5 +68,23 @@ class Course extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    /**
+     * Get the full URL for the thumbnail
+     */
+    public function getThumbnailUrlAttribute(): ?string
+    {
+        if (!$this->thumbnail) {
+            return null;
+        }
+
+        // If it's already a full URL, return as is
+        if (str_starts_with($this->thumbnail, 'http')) {
+            return $this->thumbnail;
+        }
+
+        // Return the storage URL
+        return \Storage::disk('public')->url($this->thumbnail);
     }
 }
