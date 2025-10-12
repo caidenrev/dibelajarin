@@ -27,13 +27,13 @@
             <div class="bg-slate-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-slate-600/30 overflow-hidden">
                 <div class="p-4 sm:p-6 lg:p-8">
                     <!-- Top 3 Podium (Mobile: Stack, Desktop: Side by side) -->
-                    @if($topStudents->take(3)->count() > 0)
+                    @if($users->take(3)->count() > 0)
                         <div class="mb-6 sm:mb-8">
                             <h4 class="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 text-center">Top 3 Podium</h4>
                             
                             <!-- Desktop Podium -->
                             <div class="hidden md:flex items-end justify-center gap-4 lg:gap-8 mb-8">
-                                @foreach($topStudents->take(3) as $student)
+                                @foreach($users->take(3) as $student)
                                     @if($loop->iteration == 2) {{-- Silver (2nd place) --}}
                                         <div class="flex flex-col items-center">
                                             <div class="bg-slate-600/50 rounded-xl p-4 mb-3 min-w-[140px] text-center transform hover:scale-105 transition-all duration-200">
@@ -67,15 +67,31 @@
                             </div>
 
                             <!-- Mobile Top 3 Cards -->
-                                                        <!-- Mobile Top 3 Cards -->
                             <div class="md:hidden space-y-3 mb-6">
-                                @foreach($topStudents->take(3) as $student)
+                                @foreach($users->take(3) as $student)
                                     <div class="flex items-center gap-4 backdrop-blur-sm border rounded-xl p-3 sm:p-4
                                         {{ $loop->iteration == 1 ? 'dark:bg-yellow-900/30 dark:border-yellow-500/30' : 
                                            ($loop->iteration == 2 ? 'dark:bg-slate-800/50 dark:border-slate-600/30' : 
                                            'dark:bg-orange-900/30 dark:border-orange-700/30') }}">
-                        </div>
-                    @endif
+                                        <div class="flex-shrink-0">
+                                            @if ($loop->iteration <= 3)
+                                                <span class="text-2xl">{{ ['🥇', '🥈', '🥉'][$loop->iteration - 1] }}</span>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="flex-1 min-w-0">
+                                            <h5 class="font-semibold text-white text-sm truncate">{{ $student->name }}</h5>
+                                            <p class="text-slate-400 text-xs">Peringkat #{{ $loop->iteration }}</p>
+                                        </div>
+                                        
+                                        <div class="text-right flex-shrink-0">
+                                            <p class="text-sky-400 font-bold text-sm">{{ number_format($student->xp) }}</p>
+                                            <p class="text-sky-500 text-xs">XP</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
 
                     <!-- Full Leaderboard Table -->
                     <div class="space-y-4 sm:space-y-6">
@@ -92,7 +108,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($topStudents as $student)
+                                    @forelse ($users as $student)
                                         <tr class="border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors duration-200 
                                             @if($loop->iteration <= 3) {{ $loop->iteration == 1 ? 'bg-yellow-500/5' : ($loop->iteration == 2 ? 'bg-slate-600/10' : 'bg-orange-600/5') }} @endif">
                                             <td class="p-3 sm:p-4">
@@ -133,7 +149,7 @@
 
                         <!-- Mobile Card List -->
                         <div class="sm:hidden space-y-3">
-                            @forelse ($topStudents as $student)
+                            @forelse ($users as $student)
                                 <div class="flex items-center gap-3 dark:bg-slate-800/40 hover:dark:bg-slate-700/50 rounded-xl p-3 transition-colors duration-200
                                     @if($loop->iteration <= 3) border-l-4 @endif
                                     {{ $loop->iteration == 1 ? 'dark:border-l-yellow-500/70' : 
@@ -170,6 +186,11 @@
                                 </div>
                             @endforelse
                         </div>
+                    </div>
+
+                    {{-- Pagination Links --}}
+                    <div class="mt-4">
+                        {{ $users->links() }}
                     </div>
                 </div>
             </div>
