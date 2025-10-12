@@ -131,7 +131,7 @@
                                 <button class="toggle-bio-btn mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300 self-start">Lihat Bio</button>
                             </div>
                         </div>
-                        <div class="team-back bg-orange-900 text-white p-6 flex flex-col justify-center shadow-lg h-full rounded-2xl">
+                        <div class="team-back bg-orange-100 text-white p-6 flex flex-col justify-center shadow-lg h-full rounded-2xl">
                             <h4 class="text-xl font-bold mb-2">Eka Revandi</h4>
                             <ul class="space-y-2 text-white">
                                 <li><strong>Panggilan:</strong> Revan</li>

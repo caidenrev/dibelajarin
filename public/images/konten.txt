@@ -1,0 +1,261 @@
+﻿
+
+cloud.png 641.96 KB
+﻿
+
+Ngebongkar Isi Dapur Si Awan! 
+Halo, Cloud Explorer!
+
+Selamat datang kembali! Di Modul 1 kemarin, kita udah kenalan sama konsep Cloud Computing. Kita udah sepakat kalau awan ini bukan awan Kinton nya Goku, tapi sebuah teknologi super canggih yang bikin hidup kita lebih gampang.
+
+Nah, kalau modul kemarin itu ibaratnya baru kenalan di lobi hotel, sekarang saatnya kita dapet backstage pass! Kita bakal intip "dapur" nya, lihat "mesin" nya, dan bongkar semua rahasia di balik si awan.
+
+Siap? Yuk, kita mulai petualangan jadi detektif teknologi!
+
+Data Center dan Virtualization: Fondasi Gak Kelihatan
+Setiap bangunan megah pasti punya fondasi yang kokoh, kan? Nah, di dunia cloud, fondasinya itu ada dua: Data Center dan Virtualization. Kelihatannya ribet, tapi santai, kita bedah pake analogi biar gampang.
+
+Apa itu Data Center? Rumahnya Para Server
+Bayangin sebuah mal super gede, super aman, dan super dingin. Tapi isinya bukan toko baju atau restoran, melainkan ribuan rak yang dipenuhi komputer super canggih (kita sebut mereka server) yang nyala 24/7 tanpa henti.
+
+﻿
+
+data-center.jpg 228.91 KB
+﻿ Ini dia "Mal Server" itu. Keren, kan?
+
+Data Center itu pada dasarnya adalah:
+
+Bangunan Fisik: Yup, ini beneran gedung yang ada di dunia nyata, seringkali lokasinya dirahasiakan demi keamanan.
+Isinya Server: Ribuan server yang menyimpan data dan menjalankan aplikasi. Server ini otaknya cloud.
+Super Dingin: Ada sistem pendingin canggih biar server-server ini nggak kepanasan dan "masuk angin".
+Anti Mati Lampu: Punya pasokan listrik berlapis-lapis, dari gardu utama, genset raksasa, sampai baterai cadangan (UPS).
+Koneksi Super Cepat: Terhubung dengan kabel fiber optik ke seluruh dunia.
+Super Aman: Dijaga satpam, kamera CCTV, sensor biometrik (sidik jari, retina), pokoknya kayak di film Mission: Impossible.
+Jadi, setiap kali kamu upload foto ke Instagram, nonton Netflix, atau simpan file di Google Drive, data kamu itu sebenernya lagi "nginep" di salah satu kamar (server) di dalam gedung (data center) ini.
+
+Analogi Santai: Data Center itu kayak markas Avengers. Tempat semua pahlawan super (server) berkumpul, dijaga ketat, dan punya semua teknologi canggih buat ngelawan musuh (misalnya, website down).
+Lanjutan... Virtualization: Satu Komputer Jadi Banyak! 
+Oke, kita udah punya gedung isinya ribuan server. Terus, gimana caranya satu gedung itu bisa melayani jutaan pengguna sekaligus dengan kebutuhan yang beda-beda? Jawabannya adalah Virtualization atau Virtualisasi.
+
+Ini konsep paling keren di dunia cloud.
+
+Virtualisasi adalah seni "membelah diri" sebuah komputer fisik menjadi banyak komputer virtual.
+
+Pusing? Coba bayangin ini:
+
+Analogi Santai: Pernah main game The Sims? Kamu punya satu bidang tanah (satu server fisik). Dengan virtualisasi, di atas tanah itu kamu bisa bangun beberapa rumah (komputer virtual) yang masing-masing punya keluarga sendiri, aturan sendiri, dan perabotan sendiri. Padahal, semuanya berdiri di atas tanah yang sama!
+﻿
+
+isi dapur si awan
+﻿
+
+Gimana cara kerjanya? Ada "dalang" di baliknya yang namanya Hypervisor.
+
+Hypervisor itu apa? Hypervisor adalah software super pintar yang tugasnya kayak manajer kos-kosan. Dia yang ngatur:
+
+"Kamar" (sumber daya CPU, RAM, storage) untuk setiap "penghuni kos" (komputer virtual).
+Mastiin para penghuni nggak saling ganggu dan rebutan fasilitas.
+Mengelola semua komputer virtual di atas satu server fisik.
+Kenapa virtualisasi ini penting banget?
+
+Efisiensi Maksimal: Satu server fisik nggak cuma dipakai buat satu tugas, tapi bisa buat puluhan tugas berbeda secara bersamaan. Nggak ada lagi sumber daya yang nganggur.
+Hemat Biaya: Perusahaan nggak perlu beli server fisik buat setiap aplikasi baru. Cukup "bikin" server virtual baru. Hemat tempat, hemat listrik!
+Fleksibel & Cepat: Butuh server baru buat testing? Tinggal klik-klik, dalam hitungan menit jadi! Nggak perlu nunggu berhari-hari buat beli dan pasang server fisik.
+Jadi, kombinasi Data Center (fisik) dan Virtualisasi (logika) inilah yang menjadi fondasi utama dari semua layanan cloud yang kita nikmati hari ini.
+
+Cloud Storage: Gudangnya Data di Dunia Maya 
+Oke, fondasi udah beres. Sekarang, kita ngomongin soal tempat penyimpanan. Di mana sih file file kita mulai dari foto liburan, tugas kuliah, sampai data aplikasi disimpan di awan? Jawabannya ada di Cloud Storage.
+
+Cloud Storage ini bukan satu jenis gudang, tapi ada beberapa tipe yang disesuaikan sama kebutuhannya. Yuk, kita kenalan sama tiga tipe utamanya.
+
+Tipe 1: Block Storage
+Analogi Santai: Block Storage itu kayak Hard Disk Eksternal super canggih di awan.
+Ini adalah tipe penyimpanan paling dasar dan paling cepat. Data disimpan dalam bentuk "blok-blok" berukuran sama. Kamu bisa gabungin blok-blok ini jadi satu "volume" atau partisi, persis kayak drive C: atau D: di laptop kamu.
+
+Karakteristiknya:
+
+Super Cepat: Karena strukturnya simpel, akses datanya ngebut banget.
+Fleksibel: Kamu bisa format dan atur sesuka hati, mau dijadiin sistem operasi, database, dll.
+Nempel ke Server: Biasanya, Block Storage ini "ditempelin" langsung ke satu komputer virtual (VM) sebagai hard disk utamanya.
+Cocok buat apa?
+
+Menyimpan sistem operasi (OS) dari sebuah server virtual.
+Menjalankan database yang butuh kecepatan baca/tulis tinggi (transaksi perbankan, e-commerce).
+Aplikasi-aplikasi penting yang nggak boleh lemot.
+Contoh di dunia nyata: Amazon EBS (Elastic Block Store), Google Persistent Disk.
+
+Tipe 2: File Storage
+Analogi Santai: File Storage itu kayak folder "Shared Documents" di kantor atau kayak Google Drive/Dropbox.
+Sesuai namanya, tipe ini menyimpan data dalam format file dan folder yang kita kenal sehari-hari. Strukturnya hierarkis: ada folder, di dalamnya ada sub-folder, dan seterusnya. Rapi dan terstruktur.
+
+Karakteristiknya:
+
+Gampang Diakses Barengan: Satu penyimpanan bisa diakses oleh banyak server atau pengguna secara bersamaan. Cocok buat kerja tim.
+Struktur Familiar: Tampilannya persis kayak file explorer di laptop kita, jadi gampang banget dipakainya.
+Terpusat: Jadi pusat data bersama buat banyak aplikasi.
+Cocok buat apa?
+
+Menyimpan file-file kerja yang perlu diakses oleh seluruh tim.
+Server file terpusat untuk sebuah perusahaan.
+Konten untuk website, seperti gambar, video, dan dokumen.
+Contoh di dunia nyata: Amazon EFS (Elastic File System), Azure Files.
+
+Tipe 3: Object Storage
+Analogi Santai: Object Storage itu kayak gudang raksasa dengan jutaan loker penitipan barang.
+Ini dia jagoannya penyimpanan data skala super besar. Di sini, data nggak lagi disimpan dalam blok atau folder, tapi sebagai "objek".
+
+Setiap objek itu satu paket lengkap yang isinya:
+
+Datanya sendiri: Bisa file gambar, video, lagu, dokumen, apa aja.
+Metadata: Informasi tentang data itu (misalnya, tanggal dibuat, tipe file, pemilik).
+ID Unik: Alamat atau "kunci loker" yang unik untuk ngambil objek itu lagi.
+Semua objek ini disimpan dalam sebuah wadah raksasa yang disebut "Bucket" (ember). Nggak ada lagi struktur folder yang ribet. Semuanya "geletak" gitu aja di dalam bucket, tapi masing-masing punya alamat unik.
+
+﻿
+
+storage bucket
+﻿
+
+Karakteristiknya:
+
+Skalabilitas Gila gilaan: Kamu bisa simpan data sebanyak-banyaknya, dari terabyte sampai petabyte, tanpa batas. Mau simpan seluruh video di YouTube? Bisa!
+Sangat Awet (Durable): Data kamu otomatis disalin ke beberapa lokasi, jadi kalau satu lokasi rusak, datanya tetap aman.
+Akses Lewat Internet: Biasanya diakses lewat API atau URL web, jadi gampang diintegrasikan ke aplikasi.
+Cocok buat apa?
+
+Menyimpan foto dan video untuk media sosial (Instagram, TikTok).
+Men-streaming film (Netflix, Disney+).
+Backup dan arsip data jangka panjang.
+Menyimpan data besar untuk analisis (Big Data).
+Contoh di dunia nyata: Amazon S3 (Simple Storage Service), Google Cloud Storage, Azure Blob Storage. Ini adalah layanan yang paling sering kamu temui!
+
+Networking di Cloud: Jalan Tol Digital di Awan 
+Oke, kita udah punya server virtual (VM) dan tempat penyimpanan. Pertanyaannya, gimana caranya VM VM ini "ngobrol" satu sama lain? Gimana caranya VM kita bisa nyambung ke internet biar bisa diakses pengguna?
+
+Jawabannya ada di Cloud Networking. Anggap aja ini sistem jalan tol, rambu lalu lintas, dan gerbang keamanan digital di dalam awan.
+
+VPC (Virtual Private Cloud): Komplek Perumahan Pribadi
+Komponen pertama dan paling penting adalah VPC. VPC adalah "irisan" dari cloud publik yang sepenuhnya terisolasi dan jadi milik kamu pribadi.
+
+Analogi Santai: Bayangin penyedia cloud (misal: AWS) itu sebuah kota metropolitan yang super besar dan ramai. Dengan VPC, kamu kayak beli sebidang tanah di kota itu, lalu kamu pagari tinggi tinggi. Jadilah sebuah komplek perumahan pribadi yang eksklusif.Di dalam komplek itu, kamu bebas mau bangun rumah model apa, bikin jalanan sendiri, dan pasang aturan keamanan sendiri. Orang luar nggak bisa sembarangan masuk.
+﻿
+
+vpc.png 834.79 KB
+﻿
+
+Setiap VPC itu logisnya terpisah satu sama lain, meskipun secara fisik mungkin servernya sebelahan di data center. Inilah yang ngasih kamu kontrol dan keamanan.
+
+Lanjutan... Rambu rambu Lalu Lintas Awan
+Di dalam "komplek perumahan" (VPC) kita, kita perlu ngatur lalu lintasnya. Di sinilah peran Subnet dan Security Group.
+
+Subnet: Cluster di Dalam Komplek
+
+Subnet (Sub network) adalah pembagian area di dalam VPC kamu. Biasanya, ada dua jenis subnet:
+
+Public Subnet:
+Analogi: Ini adalah cluster rumah di komplek kamu yang letaknya di pinggir jalan raya dan punya gerbang langsung ke dunia luar (internet).
+Fungsi: Cocok buat naruh server yang emang harus bisa diakses publik, contohnya Web Server (biar orang bisa buka websitemu).
+Private Subnet:
+Analogi: Ini adalah cluster rumah di bagian dalam komplek yang terisolasi. Nggak ada jalan langsung ke dunia luar. Kalau mau keluar, harus lewat cluster publik dulu.
+Fungsi: Cocok buat naruh server yang datanya sensitif dan nggak boleh diakses langsung dari internet, contohnya Database Server.
+﻿
+
+vpc-cluster
+﻿
+
+Security Group: Satpam Pribadi Tiap Rumah
+
+Kalau VPC itu pagarnya komplek, Security Group itu adalah satpam yang jaga di depan tiap-tiap rumah (server virtual).
+
+Analogi Santai: Security Group itu satpam super teliti. Dia punya buku tamu (daftar aturan/rules) yang isinya:
+Inbound Rules (Siapa Boleh Masuk): Siapa aja yang boleh "bertamu" ke server ini dan lewat "pintu" (port) mana. Contoh: "Hanya izinkan tamu dari internet (HTTP/HTTPS) masuk lewat pintu depan (port 80/443)".
+Outbound Rules (Siapa Boleh Keluar): Server ini boleh "pergi" ke mana aja. Contoh: "Izinkan server ini pergi ke mana saja untuk update software".
+Kalau ada yang coba masuk tapi nggak ada di buku tamu, satpamnya bakal langsung nolak. "Maaf, Anda siapa, ya?"
+Security Group ini adalah lapisan pertahanan pertama yang sangat penting untuk melindungi server-server kamu di cloud.
+
+Container & Orchestration: Kapsul Ajaib & Sang Konduktor 
+Dunia IT itu geraknya cepat banget. Virtual Machine (VM) emang keren, tapi kadang masih terasa "berat" dan lambat untuk dibuat. Muncullah sebuah teknologi yang lebih ringan, lebih cepat, dan lebih fleksibel: Container.
+
+Container (Docker): Kapsul Ajaib Anti Drama
+Apa itu Container?
+
+Analogi Santai: Bayangin kamu mau pindahan kosan. Cara lama (pakai VM) itu kayak kamu pindahin seluruh kamar kos beserta lemari, kasur, dan tembok temboknya. Berat dan ribet!Cara baru (pakai Container) itu kayak kamu masukin semua barang pentingmu (aplikasi, kode, dan semua kebutuhannya) ke dalam satu koper ajaib. Koper ini super ringan, dan di mana pun kamu buka koper ini (di laptop teman, di server cloud), isinya dijamin sama persis dan langsung bisa dipakai.Gak ada lagi drama, "Lho, kok di laptopku jalan, tapi di server error?"
+﻿
+
+docker.png 542.17 KB
+﻿
+
+Container adalah sebuah paket standar yang isinya adalah kode aplikasi beserta semua hal yang dibutuhkan untuk jalan (library, settingan, dll). Paket ini bisa dijalankan di mana saja secara konsisten.
+
+Docker adalah platform paling populer untuk membuat dan menjalankan container-container ini.
+
+Kenapa Container jadi idola?
+
+Ringan & Cepat: Container nggak butuh sistem operasi sendiri. Dia "nebeng" di OS milik server induknya. Makanya, bisa nyala dalam hitungan detik!
+Portabel: Bisa dijalankan di laptop developer, server kantor, atau di cloud mana pun tanpa perlu diubah-ubah.
+Efisien: Dalam satu server, kamu bisa menjalankan jauuuh lebih banyak container daripada VM.
+Lanjutan... Orchestration (Kubernetes): Mengatur Ribuan Kapsul
+Oke, bikin satu atau dua "koper ajaib" (container) itu gampang. Tapi, gimana kalau aplikasi kita super besar dan butuh ribuan container yang harus kerja bareng? Contohnya kayak Gojek atau Tokopedia.
+
+Pusing kan ngaturnya satu satu? Di sinilah sang konduktor orkestra muncul: Orchestration Tool, dan rajanya adalah Kubernetes (sering disingkat K8s).
+
+Analogi Santai: Kalau Docker itu pembuat kopernya, Kubernetes adalah perusahaan logistik dan event organizer-nya.Kamu tinggal bilang ke Kubernetes: "Tolong jalankan 1000 container aplikasi saya, pastikan 500 buat layanin user, 300 buat proses pembayaran, 200 buat chat. Kalau ada satu container yang 'sakit' atau rusak, tolong langsung ganti dengan yang baru secara otomatis. Oh ya, kalau pengunjung lagi rame, tolong tambahin containernya jadi 2000, ya. Nanti kalau udah sepi, kurangin lagi."Kubernetes bakal bilang, "Siap, laksanakan!" dan mengatur semuanya secara otomatis.
+﻿
+
+kubernetes.png 32.96 KB
+﻿
+
+Tugas utama Kubernetes (Sang Konduktor):
+
+Deployment: Menjalankan container container kamu di banyak server.
+Scaling: Menambah atau mengurangi jumlah container secara otomatis sesuai kebutuhan.
+Self healing: Kalau ada container yang mati, dia akan otomatis membuat yang baru untuk menggantikannya.
+Load Balancing: Membagi "beban kerja" (traffic pengguna) secara merata ke semua container biar nggak ada yang kelelahan.
+Kombinasi Docker (untuk membuat) dan Kubernetes (untuk mengatur) adalah fondasi dari aplikasi modern yang tangguh dan skalabel saat ini.
+
+Monitoring dan Auto Scaling: Mata Mata & Pasukan Cadangan 
+Dua komponen terakhir ini adalah "pasukan khusus" yang bikin cloud jadi super cerdas dan efisien.
+
+Monitoring: CCTV di Ruang Kontrol
+Aplikasi kamu udah jalan di cloud. Terus, gimana kamu tahu kalau semuanya berjalan lancar? Kamu perlu Monitoring.
+
+Analogi Santai: Monitoring itu kayak punya dashboard CCTV super canggih di ruang kontrol. Dari dashboard itu, kamu bisa pantau:
+Kesehatan Server: CPU nya lagi kerja keras nggak? Memorinya (RAM) hampir penuh nggak?
+Lalu Lintas Jaringan: Lagi banyak pengunjung atau sepi?
+Performa Aplikasi: Aplikasinya responsif atau lemot?
+Kalau ada indikator yang warnanya jadi merah (misalnya, CPU 100%), sistem monitoring bakal langsung ngasih alarm ke kamu lewat email atau notifikasi. "Bos, server A lagi sekarat, nih!"
+﻿
+
+cloud monitoring
+
+﻿
+
+Monitoring ini penting banget biar kamu bisa tahu masalah sebelum pengguna kamu komplain.
+
+Auto Scaling: Pasukan Cadangan Otomatis
+Nah, setelah kamu tahu ada masalah (misalnya, server kewalahan karena pengunjung membludak), apa yang kamu lakukan? Di dunia cloud, kamu nggak perlu panik. Ada fitur ajaib bernama Auto Scaling.
+
+Analogi Santai: Bayangin kamu punya toko online. Pas lagi ada Flash Sale 12.12, pengunjung tiba-tiba naik 100 kali lipat! Satu kasir (satu server) jelas nggak bakal cukup.Dengan Auto Scaling, sistem kamu cukup pintar untuk melihat antrian yang panjang. Dia bakal otomatis manggil "pasukan kasir cadangan" (membuat server server baru) untuk ikut melayani. Pengunjung pun senang karena nggak perlu antri lama.Nanti, kalau flash sale sudah selesai dan toko kembali sepi, si kasir kasir cadangan ini bakal "disuruh pulang" (server tambahan otomatis dihapus) biar kamu nggak perlu bayar gaji mereka. Efisien banget!
+Auto Scaling memastikan aplikasi kamu selalu punya sumber daya yang cukup (nggak kekurangan, nggak kelebihan). Hasilnya? Performa terjaga, biaya terkendali.
+
+Rangkuman 
+Wih, keren! Kita udah berhasil ngebongkar "dapur" nya cloud computing. Ternyata isinya kompleks tapi logis banget, kan?
+
+Yuk, kita rekap lagi apa aja yang udah kita pelajari dengan bahasa gaul:
+
+Data Center: "Mal" nya para server, tempat semuanya bermula.
+Virtualisasi: Ilmu "kloning" satu komputer fisik jadi banyak komputer virtual.
+Cloud Storage: "Gudang" data dengan tiga rasa:
+Block: Si Cepat kayak Hard Disk.
+File: Si Rapi kayak Folder Kantor.
+Object: Si Raksasa kayak Gudang Loker.
+VPC & Jaringannya: Bikin "komplek perumahan pribadi" di awan, lengkap dengan cluster (Subnet) dan satpam (Security Group).
+Container (Docker): "Koper ajaib" anti-drama buat ngemas aplikasi.
+Orchestration (Kubernetes): "Konduktor orkestra" yang ngatur ribuan koper ajaib.
+Monitoring & Auto Scaling: "CCTV" dan "pasukan cadangan otomatis" biar aplikasi tetap prima.
+Sekarang kamu udah nggak cuma tahu "apa itu cloud", tapi juga "gimana cara kerjanya" di balik layar. Pengetahuan ini bakal jadi fondasi super penting buat modul modul selanjutnya.
+
+Di modul berikutnya, kita bakal kenalan sama tiga raksasa penyedia layanan cloud paling populer di dunia: AWS, Google Cloud, dan Microsoft Azure. Kita bakal lihat siapa aja mereka dan apa aja jagoan layanan mereka.
+
+Sampai jumpa di Modul 3! Tetap semangat, Cloud Explorer!
+
