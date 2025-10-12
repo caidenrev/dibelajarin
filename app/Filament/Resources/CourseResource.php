@@ -56,7 +56,7 @@ class CourseResource extends Resource
                         '4:3',
                         '1:1',
                     ])
-                    ->required()
+                    ->required(fn (string $operation): bool => $operation === 'create')
                     ->columnSpanFull(),
                 RichEditor::make('description')
                     ->required()
