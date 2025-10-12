@@ -45,9 +45,19 @@ class CertificateController extends Controller
 
         // --- [BARU] Konversi gambar ke Base64 ---
         $path = public_path('images/mockup-sertifikat.png');
-        $type = pathinfo($path, PATHINFO_EXTENSION);
-        $imgData = file_get_contents($path);
-        $imageBase64 = 'data:image/' . $type . ';base64,' . base64_encode($imgData);
+        
+        // Check if file exists
+        if (!file_exists($path)) {
+            abort(500, 'Template sertifikat tidak ditemukan di server. Silakan hubungi administrator.');
+        }
+        
+        try {
+            $type = pathinfo($path, PATHINFO_EXTENSION);
+            $imgData = file_get_contents($path);
+            $imageBase64 = 'data:image/' . $type . ';base64,' . base64_encode($imgData);
+        } catch (\Exception $e) {
+            abort(500, 'Gagal memuat template sertifikat: ' . $e->getMessage());
+        }
 
         // Data yang akan dikirim ke view sertifikat
         $data = [
@@ -60,12 +70,22 @@ class CertificateController extends Controller
         ];
 
         // Buat PDF dari view Blade dengan orientasi landscape
-        $pdf = Pdf::loadView('certificates.template', $data)->setPaper('a4', 'landscape');
+        try {
+            // Set memory limit untuk memproses gambar besar
+            ini_set('memory_limit', '256M');
+            
+            $pdf = Pdf::loadView('certificates.template', $data)
+                ->setPaper('a4', 'landscape')
+                ->setOption('isHtml5ParserEnabled', true)
+                ->setOption('isRemoteEnabled', true);
 
-        // Buat nama file yang lebih rapi
-        $fileName = 'Sertifikat - ' . Str::slug($course->title) . '.pdf';
-        
-        // Download PDF
-        return $pdf->download($fileName);
+            // Buat nama file yang lebih rapi
+            $fileName = 'Sertifikat - ' . Str::slug($course->title) . '.pdf';
+            
+            // Download PDF
+            return $pdf->download($fileName);
+        } catch (\Exception $e) {
+            abort(500, 'Gagal membuat PDF sertifikat: ' . $e->getMessage());
+        }
     }
 }
