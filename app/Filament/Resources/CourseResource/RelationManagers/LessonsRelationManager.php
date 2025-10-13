@@ -29,16 +29,12 @@ class LessonsRelationManager extends RelationManager
                     ->maxLength(255),
                 RichEditor::make('content')
                     ->required()
-                    ->fileAttachmentsDisk('public')
-                    ->fileAttachmentsDirectory('editor-uploads')
-                    ->fileAttachmentsVisibility('public')
+                    ->fileAttachmentsDisk('public') // <-- Tambahkan ini
+                    ->fileAttachmentsDirectory('editor-uploads') // <-- Tambahkan ini
                     ->columnSpanFull(),
                 FileUpload::make('attachment')
                     ->label('Materi Tambahan (Opsional)')
-                    ->disk('public')
-                    ->directory('lesson-attachments')
-                    ->visibility('public')
-                    ->moveFiles()
+                    ->directory('lesson-attachments') // Simpan di folder storage/app/public/lesson-attachments
                     ->columnSpanFull(),
             ]);
     }
