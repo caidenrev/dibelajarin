@@ -48,20 +48,23 @@ class CourseResource extends Resource
                     ->disk('public')
                     ->directory('course-thumbnails')
                     ->visibility('public')
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->maxSize(2048)
+                    ->preserveFilenames()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/jpg'])
+                    ->maxSize(5120)
                     ->imageEditor()
                     ->imageEditorAspectRatios([
                         '16:9',
                         '4:3',
                         '1:1',
                     ])
+                    ->moveFiles()
                     ->required(fn (string $operation): bool => $operation === 'create')
                     ->columnSpanFull(),
                 RichEditor::make('description')
                     ->required()
-                    ->fileAttachmentsDisk('public') // <-- TAMBAHKAN INI
-                    ->fileAttachmentsDirectory('editor-uploads') // <-- TAMBAHKAN INI (opsional tapi disarankan)
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('editor-uploads')
+                    ->fileAttachmentsVisibility('public')
                     ->columnSpanFull(),
             ]);
     }
